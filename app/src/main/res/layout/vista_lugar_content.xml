@@ -51,10 +51,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/LinearMapa"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="@drawable/ripple_recycler">
+            android:background="@drawable/ripple_l">
 
             <ImageView
                 android:id="@+id/menu_direccion"
@@ -78,10 +75,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/LinearTelefono"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="@drawable/ripple_recycler"
+            android:background="@drawable/ripple_l"
             >
 
             <ImageView
@@ -106,10 +100,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/LinearWeb"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="@drawable/ripple_recycler"
+            android:background="@drawable/ripple_l"
             >
 
             <ImageView
@@ -155,10 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="@drawable/ripple_recycler">
+            android:background="@drawable/ripple_l">
 
             <ImageView
                 android:id="@+id/menu_my_calendar"
@@ -181,10 +169,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="@drawable/ripple_recycler">
+            android:background="@drawable/ripple_l">
 
             <ImageView
                 android:id="@+id/menu_recent_history"
