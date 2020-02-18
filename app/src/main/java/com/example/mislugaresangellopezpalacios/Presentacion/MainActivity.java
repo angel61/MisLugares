@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
+import android.graphics.drawable.RippleDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.example.mislugaresangellopezpalacios.Adaptadores.AdaptadorLugares;
@@ -15,6 +18,7 @@ import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLocalizacion;
 import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLugar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public CasosUsoLocalizacion usoLocalizacion;
     static final int RESULTADO_PREFERENCIAS = 0;
     static final int RESULTADO_Activities = 1;
+    private RippleDrawable rippleDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
         lugares = ((Aplicacion) getApplication()).lugares;
         usoLugar = new CasosUsoLugar(this, lugares,adaptador);
+
+
+
 
         preferencias();
         inicializarVistas();
@@ -79,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptador);
+
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -118,11 +128,16 @@ public class MainActivity extends AppCompatActivity {
             public void onRequestDisallowInterceptTouchEvent(boolean b) {
 
             }
-            @Override
+           @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
                 try {
                     View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
                     if (child != null && GestureDetector.onTouchEvent(motionEvent)) {
+
+                        rippleDrawable = (RippleDrawable) child.getBackground();
+                        rippleDrawable.setHotspot(motionEvent.getX(), motionEvent.getY());
+                        rippleDrawable.setState(new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled });
+
                         int pos = recyclerView.getChildAdapterPosition(child);
                         usoLugar.mostrar(pos,1);
                        // Toast.makeText(MainActivity.this,"Elemento seleccionado: "+ (pos+1) ,Toast.LENGTH_SHORT).show();
