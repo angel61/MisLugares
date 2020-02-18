@@ -115,4 +115,9 @@ public class EdicionLugarActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         pos = extras.getInt("pos", 0);
     }
+    @Override
+    public void onBackPressed() {
+        if (_id!=-1) lugares.borrar(_id);
+        finish();
+    }
 }
