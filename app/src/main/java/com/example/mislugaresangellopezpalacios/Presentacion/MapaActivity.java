@@ -42,6 +42,8 @@ public class MapaActivity extends FragmentActivity
      * Este metodo inicializa el layout, el adaptador y el mapa
      *
      * @param savedInstanceState
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,9 +57,11 @@ public class MapaActivity extends FragmentActivity
     }
 
     /**
-     * Evento que inicializa los valores del mapa cuando esta listo
+     * Este método se va a llamar cuando el mapa este listo para usarse y Obtengamos un objeto GoogleMap no nulo
      *
      * @param googleMap
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -107,6 +111,8 @@ public class MapaActivity extends FragmentActivity
      * Evento que lanza una actividad {@link VistaLugarActivity} cuando se pulsa algun lugar marcado en el mapa
      *
      * @param marker
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onInfoWindowClick(Marker marker) {

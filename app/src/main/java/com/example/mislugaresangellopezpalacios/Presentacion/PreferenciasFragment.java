@@ -8,6 +8,7 @@ import com.example.mislugaresangellopezpalacios.R;
 /**
  * Crea un fragment que contiene una ventana con las opciones de preferencias definidas en un recurso XML
  *
+ * @see {@link PreferenciasActivity}
  * @author Angel Lopez Palacios
  * @version 15/02/2020
  */
