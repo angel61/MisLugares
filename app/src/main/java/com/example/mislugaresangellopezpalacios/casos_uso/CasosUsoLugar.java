@@ -132,8 +132,9 @@ public class CasosUsoLugar {
      * @param lugar
      */
     public void verPgWeb(Lugar lugar) {
+        try{
         actividad.startActivity(new Intent(Intent.ACTION_VIEW,
-                Uri.parse(lugar.getUrl())));
+                Uri.parse(lugar.getUrl())));}catch(Exception ex){}
     }
 
     /**
