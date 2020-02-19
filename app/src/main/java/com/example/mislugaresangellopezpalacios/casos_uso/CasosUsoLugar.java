@@ -81,6 +81,11 @@ public class CasosUsoLugar {
         adaptador.notifyDataSetChanged();
         actividad.finish();
     }
+    public void borrarSinFinish(final int id) {
+        lugares.borrar(id);
+        adaptador.setCursor(lugares.extraeCursor());
+        adaptador.notifyDataSetChanged();
+    }
 
     /**
      * Guarda la informacion de un lugar editado o creado

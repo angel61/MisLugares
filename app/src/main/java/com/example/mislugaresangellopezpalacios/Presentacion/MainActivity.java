@@ -21,11 +21,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -118,11 +120,59 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GestureDetector GestureDetector =
-        new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
-            @Override public boolean onSingleTapUp(MotionEvent e) {
-                return true;
-            }
-        });
+                new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
+                    @Override public boolean onDoubleTapEvent(MotionEvent e) {
+                        return false;
+                    }
+                    @Override public boolean onSingleTapUp(MotionEvent e) {
+                        return true;
+                    }
+
+                });
+        final GestureDetector gd2 =
+                new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
+                    @Override  public void onLongPress(MotionEvent e) {
+
+                        final View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                        if(child!=null){
+
+                            final int pos = recyclerView.getChildAdapterPosition(child);
+                        PopupMenu popup = new PopupMenu(MainActivity.this, child);
+                        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+
+                                switch (item.getItemId()) {
+                                    case R.id.accion_editar:
+                                        usoLugar.editar(pos, 15);
+                                        return true;
+                                    case R.id.accion_borrar:
+
+                                        new AlertDialog.Builder(MainActivity.this)
+                                                .setTitle("Borrado de lugar")
+                                                .setMessage("¿Estas seguro que quieres eliminar este lugar?")
+                                                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                                                        int _id = adaptador.idPosicion(pos);
+                                                        usoLugar.borrarSinFinish(_id);
+                                                    }
+                                                })
+                                                .setNegativeButton("Cancelar", null)
+                                                .show();
+
+                                        return true;
+                                    default:
+                                        return false;
+                                }
+                            }
+                        });
+
+                        popup.show();}
+                    }
+
+                });
+
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean b) {
@@ -132,17 +182,25 @@ public class MainActivity extends AppCompatActivity {
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
                 try {
                     View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-                    if (child != null && GestureDetector.onTouchEvent(motionEvent)) {
+                    if(child != null ){
 
-                        rippleDrawable = (RippleDrawable) child.getBackground();
-                        rippleDrawable.setHotspot(motionEvent.getX(), motionEvent.getY());
-                        rippleDrawable.setState(new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled });
 
-                        int pos = recyclerView.getChildAdapterPosition(child);
-                        usoLugar.mostrar(pos,1);
-                       // Toast.makeText(MainActivity.this,"Elemento seleccionado: "+ (pos+1) ,Toast.LENGTH_SHORT).show();
+                    gd2.onTouchEvent(motionEvent);
 
-                        return true;
+
+
+                        if (GestureDetector.onTouchEvent(motionEvent)) {
+
+                            rippleDrawable = (RippleDrawable) child.getBackground();
+                            rippleDrawable.setHotspot(motionEvent.getX(), motionEvent.getY());
+                            rippleDrawable.setState(new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled });
+
+                            int pos = recyclerView.getChildAdapterPosition(child);
+                            usoLugar.mostrar(pos,1);
+                            // Toast.makeText(MainActivity.this,"Elemento seleccionado: "+ (pos+1) ,Toast.LENGTH_SHORT).show();
+
+                            return true;
+                        }
                     }
                 }catch (Exception e){
                     e.printStackTrace();
