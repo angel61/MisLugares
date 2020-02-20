@@ -10,6 +10,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
@@ -31,7 +32,7 @@ import static androidx.core.app.ActivityCompat.shouldShowRequestPermissionRation
  * @author Angel Lopez Palacios
  * @version 15/02/2020
  */
-public class CasosUsoLocalizacion implements LocationListener {
+public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.OnRequestPermissionsResultCallback {
     private static final String TAG = "MisLugares";
     private Activity actividad;
     private int codigoPermiso;
@@ -41,11 +42,14 @@ public class CasosUsoLocalizacion implements LocationListener {
     private AdaptadorLugares adaptador;
     private static final long DOS_MINUTOS = 2 * 60 * 1000;
 
+
     /**
-     * Constructor de {@link CasosUsoLocalizacion}
+     * Constructor para solicitar los permisos de localizacion y a la vez, inicializar la posición actual y la mejor posición conocida
      *
      * @param actividad
      * @param codigoPermiso
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public CasosUsoLocalizacion(Activity actividad, int codigoPermiso) {
         this.actividad = actividad;
@@ -61,9 +65,11 @@ public class CasosUsoLocalizacion implements LocationListener {
     }
 
     /**
-     * Este método que comprueba si el usuario ha concedido permisos o no
+     * Método que si devuelve true es que la app tiene permisos de localizacion concedidos
      *
-     * @return
+     * @return true o false
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public boolean hayPermisoLocalizacion() {
         return (ActivityCompat.checkSelfPermission(
@@ -71,8 +77,12 @@ public class CasosUsoLocalizacion implements LocationListener {
                 == PackageManager.PERMISSION_GRANTED);
     }
 
+
     /**
-     * Este método busca la última localización disponible
+     * Método que guarda la ultima localización conocida del terminal
+     *
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @SuppressLint("MissingPermission")
     public void ultimaLocalizazion() {
@@ -92,12 +102,15 @@ public class CasosUsoLocalizacion implements LocationListener {
         }
     }
 
+
     /**
-     * Este metodo solicita permisos de localizacion si es que la aplicacion aun no los tiene
+     * Método que genera un dialogo para pedir que se acepten los permisos de localización de la app
      *
      * @param permiso
      * @param justificacion
      * @param requestCode
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public void solicitarPermiso(final String permiso, String justificacion,
                                  final int requestCode) {
@@ -122,6 +135,9 @@ public class CasosUsoLocalizacion implements LocationListener {
      * Este método es llamado cuando el permiso es concedido
      * Su funcion es recoger la ultima localización disponible,
      * activa los eventos de localizacion y refresca el RecyclerView
+     *
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public void permisoConcedido() {
         ultimaLocalizazion();
@@ -132,6 +148,9 @@ public class CasosUsoLocalizacion implements LocationListener {
     /**
      * Hace que la clase sea informada con cada actualización del proveedor de localización
      * Si no tiene permisos los solicita
+     *
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @SuppressLint("MissingPermission")
     private void activarProveedores() {
@@ -153,9 +172,11 @@ public class CasosUsoLocalizacion implements LocationListener {
 
 
     /**
-     * Actualiza la posición cuando está cambia
+     * Método que actualiza la localización si el terminal se ha movido
      *
      * @param location
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onLocationChanged(Location location) {
@@ -164,10 +185,13 @@ public class CasosUsoLocalizacion implements LocationListener {
         adaptador.notifyDataSetChanged();
     }
 
+
     /**
-     * Desactiva los proveedores
+     * Método que activa los proveedores si estos estan deshabilitados
      *
      * @param proveedor
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onProviderDisabled(String proveedor) {
@@ -176,9 +200,11 @@ public class CasosUsoLocalizacion implements LocationListener {
     }
 
     /**
-     * Activa los proveedores
+     * Método que activa los proveedores para que no dejen de estas habilitados
      *
      * @param proveedor
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onProviderEnabled(String proveedor) {
@@ -188,11 +214,13 @@ public class CasosUsoLocalizacion implements LocationListener {
 
 
     /**
-     * Evento que se lanza cuando cambia el estado
+     * Método que comprueba que la ubicación del terminal ha cambiado
      *
      * @param proveedor
      * @param estado
      * @param extras
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onStatusChanged(String proveedor, int estado, Bundle extras) {
@@ -202,9 +230,11 @@ public class CasosUsoLocalizacion implements LocationListener {
 
 
     /**
-     * Este metodo actualiza {@link #mejorLoc} y {@link Aplicacion#posicionActual} cuando se cumplen ciertos requisitos
+     * Método que actualiza a la mejor localización del terminal cada 2 minutos
      *
      * @param localiz
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     private void actualizaMejorLocaliz(Location localiz) {
         if (localiz != null && (mejorLoc == null
@@ -220,17 +250,40 @@ public class CasosUsoLocalizacion implements LocationListener {
     }
 
     /**
-     * Activa los listeners
+     * Método que activa los permisos de localización y proveedores
+     *
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public void activar() {
         if (hayPermisoLocalizacion()) activarProveedores();
     }
 
+
     /**
-     * Desactiva los listeners
+     * Método que borra las localizaciones para el ahorro de datos
+     *
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public void desactivar() {
         if (hayPermisoLocalizacion()) manejadorLoc.removeUpdates(this);
     }
 
+    /**
+     * Devuelve el resultado de pedir los permisos
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == codigoPermiso
+                && grantResults.length == 1
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            Toast.makeText(this.actividad, "Permiso de localización concedido", Toast.LENGTH_LONG).show();
+    }
 }

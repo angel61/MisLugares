@@ -19,26 +19,35 @@ import com.example.mislugaresangellopezpalacios.R;
 
 
 /**
- * Esta clase pretende rellenar el ReciclweView
+ * Clase para adaptar la información de los lugares para poder mostrarla en el RecycleView
  *
  * @author Angel Lopez Palacios
  * @version 15/02/2020
+ * @see androidx.recyclerview.widget.RecyclerView.Adapter
  */
-
 public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.ViewHolder> {
     protected View.OnClickListener onClickListener;
 
 
-
     protected RepositorioLugares lugares;         // Lista de lugares a mostrar
 
+    /**
+     * Constructor de la clase
+     *
+     * @param lugares
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
+     */
     public AdaptadorLugares(RepositorioLugares lugares) {
         this.lugares = lugares;
     }
 
 
     /**
-     * Crea un ViewHolder, con los tipos de elementos a modificar
+     * Instancia de elementos a mostrar en el RecycleView
+     *
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nombre, direccion;
@@ -46,10 +55,13 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
         public RatingBar valoracion;
         public TextView distancia;
 
+
         /**
-         * Constructor del ViewHolder
+         * Método que permite visualizar los elementos seleccionados en la vista RecycleView
          *
          * @param itemView
+         * @author Angel Lopez Palacios
+         * @version 15/02/2020
          */
         public ViewHolder(View itemView) {
             super(itemView);
@@ -61,9 +73,12 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
         }
 
         /**
-         * Este metodo personaliza un ViewHolder a partir de un lugar
+         * Método que permite seleccionar el tipo de icono que va a tener nuestro lugar,
+         * ponerle una valoración al lugar, obtener la distancia a la que se encuentra de tu posición
          *
          * @param lugar
+         * @author Angel Lopez Palacios
+         * @version 15/02/2020
          */
         public void personaliza(Lugar lugar) {
             nombre.setText(lugar.getNombre());
@@ -119,11 +134,13 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
     }
 
     /**
-     * Crea el ViewHolder con la vista de un elemento sin personalizar
+     * Crea un ViewHolder e inicializa los campos siguiendo el diseño de elementolista.xml
      *
      * @param parent
      * @param viewType
-     * @return
+     * @return ViewHolder
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -135,10 +152,12 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
     }
 
     /**
-     * Usa como base el ViewHolder y lo personalizamos
+     * Método que actualiza los ViewHolder a partir de la posicion del elemento
      *
      * @param holder
      * @param posicion
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int posicion) {
@@ -147,24 +166,27 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
     }
 
     /**
-     * Indicamos el número de elementos de la lista
+     * Devuelve el número total de elementos en el conjunto de datos
      *
-     * @return numero de elementos
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public int getItemCount() {
         return lugares.tamanno();
     }
 
-
+    /**
+     * Añade un OncliItemClickListener a la clase
+     *
+     * @param onClickListener
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
+     * @deprecated 15/02/2020
+     */
     public void setOnItemClickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
-
-
-
-
-
 
 
 }

@@ -13,7 +13,7 @@ import static androidx.core.app.ActivityCompat.*;
 
 
 /**
- * Esta clase se utiliza para perdir y comprobar permisos de lectura y escritura de imagenes
+ * Clase para los distintos permisos de almacenamiento como pueden ser de escritura como de lecutra
  *
  * @author Angel Lopez Palacios
  * @version 15/02/2020
@@ -25,11 +25,14 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
     private Activity actividad;
     private int codigoPermiso;
 
+
     /**
-     * Constructor de {@link CasoDeUsoAlmacenamiento}
+     * Constructor para solicitar permisos de lectura y escritura
      *
      * @param actividad
      * @param codigoPermiso
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public CasoDeUsoAlmacenamiento(Activity actividad, int codigoPermiso) {
         this.actividad = actividad;
@@ -43,11 +46,13 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
     }
 
     /**
-     * Este metodo solicita permisos en una actividad
+     * Método que genera un dialogo para pedir que se acepten los permisos de almacenamiento de la app
      *
      * @param permiso
      * @param justificacion
      * @param requestCode
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public void solicitarPermiso(final String permiso, String justificacion,
                                  final int requestCode) {
@@ -68,12 +73,16 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
         }
     }
 
+
     /**
-     * Este metodo solicita permisos en un Fragment
+     * Solicitar permiso fragment.
      *
      * @param permiso
      * @param justificacion
      * @param requestCode
+     * @param fragment
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public void solicitarPermisoFragment(final String permiso, String justificacion,
                                          final int requestCode, final Fragment fragment) {
@@ -93,10 +102,13 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
         }
     }
 
+
     /**
-     * Comprueba si hay permisos de lectura
+     * Método que si devuelve true significa que la app tiene permisos de lectura concedidos
      *
-     * @return boolean
+     * @return true o false
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public boolean hayPermisoAlmacenamiento() {
         return (checkSelfPermission(
@@ -104,10 +116,13 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
                 == PackageManager.PERMISSION_GRANTED);
     }
 
+
     /**
-     * Comprueba si hay permisos de escritura
+     * Método que si devuelve true significa que la app tiene permisos de escritura concedidos
      *
-     * @return boolean
+     * @return true o false
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     public boolean hayPermisoAlmacenamientoEscritura() {
         return (checkSelfPermission(
@@ -115,12 +130,15 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
                 == PackageManager.PERMISSION_GRANTED);
     }
 
+
     /**
-     * Evento que comprueba si se concedieron permisos y muestra un mensaje si se concedieron
+     * Devuelve el resultado de pedir los permisos
      *
      * @param requestCode
      * @param permissions
      * @param grantResults
+     * @author Angel Lopez Palacios
+     * @version 15/02/2020
      */
     @Override
     public void onRequestPermissionsResult(int requestCode,
