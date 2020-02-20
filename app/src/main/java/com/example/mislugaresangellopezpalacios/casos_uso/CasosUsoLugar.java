@@ -47,8 +47,8 @@ public class CasosUsoLugar {
      * @param adaptador
      * @version 1
      * @author Angel Lopez Palacios
-     * @see {@link LugaresBD}
-     * @see {@link AdaptadorLugaresBD}
+     * @see  LugaresBD
+     * @see  AdaptadorLugaresBD
      */
     public CasosUsoLugar(Activity actividad, LugaresBD lugares,
                          AdaptadorLugaresBD adaptador) {
@@ -237,9 +237,9 @@ public class CasosUsoLugar {
      * @param imageView
      * @version 1
      * @author Angel Lopez Palacios
-     * @see {@link Lugar#setFoto(String)}
-     * @see {@link #visualizarFoto(Lugar, ImageView)}
-     * @see {@link #actualizaPosLugar(int, Lugar)}
+     * @see  Lugar#setFoto(String)
+     * @see  #visualizarFoto(Lugar, ImageView)
+     * @see  #actualizaPosLugar(int, Lugar)
      */
     public void ponerFoto(int pos, String uri, ImageView imageView) {
         Lugar lugar = adaptador.lugarPosicion(pos);
@@ -307,8 +307,8 @@ public class CasosUsoLugar {
      * @param lugar
      * @version 1
      * @author Angel Lopez Palacios
-     * @see {@link AdaptadorLugaresBD#idPosicion(int)}
-     * @see {@link #guardar(int, Lugar)}
+     * @see  AdaptadorLugaresBD#idPosicion(int)
+     * @see  #guardar(int, Lugar)
      */
     public void actualizaPosLugar(int pos, Lugar lugar) {
         int id = adaptador.idPosicion(pos);
@@ -320,10 +320,10 @@ public class CasosUsoLugar {
      *
      * @version 1
      * @author Angel Lopez Palacios
-     * @see {@link LugaresBD#nuevo()}
-     * @see {@link LugaresBD#elemento(int)}
-     * @see {@link Lugar#setPosicion(GeoPunto)}
-     * @see {@link LugaresBD#actualiza(int, Lugar)}
+     * @see  LugaresBD#nuevo()
+     * @see  LugaresBD#elemento(int)
+     * @see  Lugar#setPosicion(GeoPunto)
+     * @see  LugaresBD#actualiza(int, Lugar)
      */
     public void nuevo() {
         int id = lugares.nuevo();

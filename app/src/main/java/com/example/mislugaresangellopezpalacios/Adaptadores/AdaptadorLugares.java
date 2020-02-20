@@ -182,7 +182,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      * @param onClickListener
      * @author Angel Lopez Palacios
      * @version 1
-     * @deprecated 1.6
+     * @deprecated 1
      */
     public void setOnItemClickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;

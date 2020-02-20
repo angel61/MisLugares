@@ -10,6 +10,7 @@ import com.example.mislugaresangellopezpalacios.Modelo.RepositorioLugares;
  * Clase para adaptar la base de datos a nuestra app
  * para que se guarden tanto los cambios que realicemos en los lugares
  * como cuando creamos un nuevo lugar
+ *
  * @author Angel Lopez Palacios
  * @version 1
  */
@@ -31,10 +32,25 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
         this.cursor = cursor;
     }
 
+
+    /**
+     * Devuelve el cursor
+     *
+     * @return lugar
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     public Cursor getCursor() {
         return cursor;
     }
 
+    /**
+     * Establece un cursor
+     *
+     * @param cursor
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     public void setCursor(Cursor cursor) {
         this.cursor = cursor;
     }
@@ -109,6 +125,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
 
     /**
      * Devuelve el número total de elementos en el conjunto de datos
+     *
      * @author Angel Lopez Palacios
      * @version 1
      */
