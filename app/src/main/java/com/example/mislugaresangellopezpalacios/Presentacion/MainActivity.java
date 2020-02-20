@@ -43,7 +43,7 @@ import android.widget.Toast;
 /**
  * Clase MainActivity que es la encargada de mostrar la pantalla principal
  * @author Angel Lopez Palacios
- * @version 1.6
+ * @version 1
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param savedInstanceState
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Método para inicializar la vista de el RecyclerView, la toolbar y del floating button
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void inicializarVistas(){
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
      * Método para inicializar los listener, en este el del floating button para que cuando lo pulsemos llame al método de crear un nuevo Lugar,
      * tambien inicializa los listener para los elementos del RecyclerView
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     private void inicializarListeners(){
 
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
      * @param menu
      * @return true
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
      * @param item
      * @return true
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
    public void lanzarVistaLugar(View view){
        final EditText entrada = new EditText(this);
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
      * @param resultCode
      * @param data
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override protected void onActivityResult(int requestCode, int resultCode,
                                               Intent data) {
@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
      * @param permissions
      * @param grantResults
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override public void onRequestPermissionsResult(int requestCode,
                                                      String[] permissions, int[] grantResults) {
@@ -343,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Método que activa la localización cuando vuelve a estar en primer plano
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override protected void onResume() {
         super.onResume();
@@ -353,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Método que desactiva la localización cuando se pausa la app
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override protected void onPause() {
         super.onPause();

@@ -16,7 +16,7 @@ import static androidx.core.app.ActivityCompat.*;
  * Clase para los distintos permisos de almacenamiento como pueden ser de escritura como de lecutra
  *
  * @author Angel Lopez Palacios
- * @version 1.6
+ * @version 1
  */
 public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallback {
 
@@ -32,7 +32,7 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
      * @param actividad
      * @param codigoPermiso
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public CasoDeUsoAlmacenamiento(Activity actividad, int codigoPermiso) {
         this.actividad = actividad;
@@ -52,7 +52,7 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
      * @param justificacion
      * @param requestCode
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void solicitarPermiso(final String permiso, String justificacion,
                                  final int requestCode) {
@@ -82,7 +82,7 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
      * @param requestCode
      * @param fragment
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void solicitarPermisoFragment(final String permiso, String justificacion,
                                          final int requestCode, final Fragment fragment) {
@@ -108,7 +108,7 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
      *
      * @return true o false
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public boolean hayPermisoAlmacenamiento() {
         return (checkSelfPermission(
@@ -122,7 +122,7 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
      *
      * @return true o false
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public boolean hayPermisoAlmacenamientoEscritura() {
         return (checkSelfPermission(
@@ -138,7 +138,7 @@ public class CasoDeUsoAlmacenamiento implements OnRequestPermissionsResultCallba
      * @param permissions
      * @param grantResults
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     public void onRequestPermissionsResult(int requestCode,

@@ -6,24 +6,24 @@ import java.util.Objects;
  * Clase utilizada para manejar datos de localizacion como latitud y longitud
  *
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1
  */
 public class GeoPunto {
 
     private double longitud, latitud;
 
     /**
-     * GeoPunto inicializado con latitud 0 y longitud 0
+     *Geopunto con ambas variables "latitud" y "longitud" en 0.0
      */
     static public GeoPunto SIN_POSICION = new GeoPunto(0.0, 0.0);
 
     /**
-     * Constructor de la clase que inicializa la latitud y la longitud
+     * Constructor de la clase que inicializa la latitud y la longitud del GeoPunto
      *
      * @param longitud
      * @param latitud
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public GeoPunto(double longitud, double latitud) {
         this.longitud = longitud;
@@ -35,19 +35,19 @@ public class GeoPunto {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public String toString() {
         return new String("longitud:" + longitud + ", latitud:" + latitud);
     }
 
     /**
-     * Metodo que calcula la distancia entre dos {@link GeoPunto}
+     * Método que calcula la distancia entre dos {@link GeoPunto}
      *
      * @param punto
      * @return double
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public double distancia(GeoPunto punto) {
         final double RADIO_TIERRA = 6371000; // en metros
@@ -67,7 +67,7 @@ public class GeoPunto {
      *
      * @return double
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public double getLongitud() {
         return longitud;
@@ -78,7 +78,7 @@ public class GeoPunto {
      *
      * @param longitud
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public void setLongitud(double longitud) {
         this.longitud = longitud;
@@ -89,7 +89,7 @@ public class GeoPunto {
      *
      * @return double
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public double getLatitud() {
         return latitud;
@@ -100,7 +100,7 @@ public class GeoPunto {
      *
      * @param latitud
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public void setLatitud(double latitud) {
         this.latitud = latitud;
@@ -111,7 +111,7 @@ public class GeoPunto {
      *
      * @return SIN_POSICION
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public static GeoPunto getSinPosicion() {
         return SIN_POSICION;
@@ -122,7 +122,7 @@ public class GeoPunto {
      *
      * @param sinPosicion
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     public static void setSinPosicion(GeoPunto sinPosicion) {
         SIN_POSICION = sinPosicion;
@@ -134,7 +134,7 @@ public class GeoPunto {
      * @param o
      * @return boolean
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     @Override
     public boolean equals(Object o) {
@@ -150,7 +150,7 @@ public class GeoPunto {
      *
      * @return int
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1
      */
     @Override
     public int hashCode() {

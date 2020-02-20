@@ -10,7 +10,7 @@ import com.example.mislugaresangellopezpalacios.R;
  *
  * @see {@link PreferenciasActivity}
  * @author Angel Lopez Palacios
- * @version 1.6
+ * @version 1
  */
 public class PreferenciasFragment extends PreferenceFragment {
     @Override

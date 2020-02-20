@@ -7,7 +7,7 @@ import java.util.List;
  * Clase LugaresLista que implementa la clase RepositorioLugares
  *
  * @author Angel Lopez Palacios
- * @version 1.6
+ * @version 1
  */
 public class LugaresLista implements RepositorioLugares {
     protected List<Lugar> listaLugares;
@@ -16,7 +16,7 @@ public class LugaresLista implements RepositorioLugares {
      * Constructor para definir un ArrayList de Lugar y llamar el método de Añadir ejemplos
      *
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public LugaresLista() {
         listaLugares = new ArrayList<Lugar>();
@@ -30,7 +30,7 @@ public class LugaresLista implements RepositorioLugares {
      * @param id Id del Lugar
      * @return Lugar
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public Lugar elemento(int id) {
         return listaLugares.get(id);
@@ -41,7 +41,7 @@ public class LugaresLista implements RepositorioLugares {
      *
      * @param lugar Lugar
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void annade(Lugar lugar) {
         listaLugares.add(lugar);
@@ -52,7 +52,7 @@ public class LugaresLista implements RepositorioLugares {
      *
      * @return Id del Lugar agregado
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public int nuevo() {
         Lugar lugar = new Lugar();
@@ -65,7 +65,7 @@ public class LugaresLista implements RepositorioLugares {
      *
      * @param id Id del Lugar a borrar
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void borrar(int id) {
         listaLugares.remove(id);
@@ -76,7 +76,7 @@ public class LugaresLista implements RepositorioLugares {
      *
      * @return Tamaño de la lista
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public int tamanno() {
         return listaLugares.size();
@@ -88,7 +88,7 @@ public class LugaresLista implements RepositorioLugares {
      * @param id    Id del Lugar que quiere editar
      * @param lugar Objeto Lugar con los nuevos datos
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void actualiza(int id, Lugar lugar) {
         listaLugares.set(id, lugar);
@@ -98,7 +98,7 @@ public class LugaresLista implements RepositorioLugares {
      * Método para agregar objetos Lugar al ArrayList
      *
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public void annadeEjemplos() {
         annade(new Lugar("Escuela Politécnica Superior de Gandía",

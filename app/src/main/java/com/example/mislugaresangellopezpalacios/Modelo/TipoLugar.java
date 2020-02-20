@@ -6,7 +6,7 @@ import com.example.mislugaresangellopezpalacios.R;
  * Listado de los Tipos con su respectivo icono
  *
  * @author Angel Lopez Palacios
- * @version 1.6
+ * @version 1
  */
 public enum TipoLugar {
     OTROS("Otros", R.drawable.otros),
@@ -35,7 +35,7 @@ public enum TipoLugar {
      *
      * @return Texto
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public String getTexto() {
         return texto;
@@ -46,7 +46,7 @@ public enum TipoLugar {
      *
      * @return Recurso
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public int getRecurso() {
         return recurso;
@@ -57,7 +57,7 @@ public enum TipoLugar {
      *
      * @return Array de nombres
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public static String[] getNombres() {
         String[] resultado = new String[TipoLugar.values().length];

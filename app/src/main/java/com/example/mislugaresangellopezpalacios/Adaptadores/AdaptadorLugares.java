@@ -22,7 +22,7 @@ import com.example.mislugaresangellopezpalacios.R;
  * Clase para adaptar la información de los lugares para poder mostrarla en el RecycleView
  *
  * @author Angel Lopez Palacios
- * @version 1.6
+ * @version 1
  * @see androidx.recyclerview.widget.RecyclerView.Adapter
  */
 public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.ViewHolder> {
@@ -36,7 +36,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      *
      * @param lugares
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public AdaptadorLugares(RepositorioLugares lugares) {
         this.lugares = lugares;
@@ -47,7 +47,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      * Instancia de elementos a mostrar en el RecycleView
      *
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nombre, direccion;
@@ -61,7 +61,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
          *
          * @param itemView
          * @author Angel Lopez Palacios
-         * @version 1.6
+         * @version 1
          */
         public ViewHolder(View itemView) {
             super(itemView);
@@ -78,7 +78,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
          *
          * @param lugar
          * @author Angel Lopez Palacios
-         * @version 1.6
+         * @version 1
          */
         public void personaliza(Lugar lugar) {
             nombre.setText(lugar.getNombre());
@@ -140,7 +140,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      * @param viewType
      * @return ViewHolder
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -157,7 +157,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      * @param holder
      * @param posicion
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int posicion) {
@@ -169,7 +169,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      * Devuelve el número total de elementos en el conjunto de datos
      *
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      */
     @Override
     public int getItemCount() {
@@ -181,7 +181,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
      *
      * @param onClickListener
      * @author Angel Lopez Palacios
-     * @version 1.6
+     * @version 1
      * @deprecated 1.6
      */
     public void setOnItemClickListener(View.OnClickListener onClickListener) {
