@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Actividad que simplemente muestra {@link PreferenciasFragment}
  *
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1.6
  */
 public class PreferenciasActivity extends AppCompatActivity {
     @Override

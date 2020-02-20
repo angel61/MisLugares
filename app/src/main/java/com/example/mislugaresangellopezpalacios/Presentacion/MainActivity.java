@@ -39,8 +39,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+
 /**
- *
+ * Clase MainActivity que es la encargada de mostrar la pantalla principal
+ * @author Angel Lopez Palacios
+ * @version 1.6
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -61,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
     static final int RESULTADO_Activities = 1;
     private RippleDrawable rippleDrawable;
 
+    /**
+     * Método para inicializar el layout, los listener y llenar las demás clases
+     *
+     * @param savedInstanceState
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
                 SOLICITUD_PERMISO_LOCALIZACION);
 
     }
+
+    /**
+     * Método para inicializar la vista de el RecyclerView, la toolbar y del floating button
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     public void inicializarVistas(){
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -95,23 +111,17 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //bAcercaDe = findViewById(R.id.button03);
-
-        //bSalir = findViewById(R.id.button04);
-
-        //bPreferencias = findViewById(R.id.button02);
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
     }
+
+    /**
+     * Método para inicializar los listener, en este el del floating button para que cuando lo pulsemos llame al método de crear un nuevo Lugar,
+     * tambien inicializa los listener para los elementos del RecyclerView
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     private void inicializarListeners(){
 
-       /* fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 usoLugar.nuevo();
@@ -214,25 +224,34 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
+    /**
+     * Método para crear el menú superior con el menú establecido en el xml
+     *
+     * @param menu
+     * @return true
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
         return true;
     }
 
+    /**
+     * Método para definir las acciones de cada elemento del menú
+     *
+     * @param item
+     * @return true
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent i = new Intent(this, PreferenciasActivity.class);
             startActivityForResult(i, RESULTADO_PREFERENCIAS);
@@ -245,9 +264,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.menu_buscar) {
-            /*
-            Intent i = new Intent(getBaseContext(), busca_id.class);
-            startActivity(i);*/
            lanzarVistaLugar(null);
             return true;
         }
@@ -258,12 +274,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void salir(View view){
-        finish();
-    }
-   /* public static void lanzarVistaLugar(View view, int num){
-        usoLugar.mostrar(num);
-    }*/
+    /**
+     * Método para abrir un Diálogo para escribir el id del lugar que quieres visualizar
+     *
+     * @param view
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
    public void lanzarVistaLugar(View view){
        final EditText entrada = new EditText(this);
        entrada.setText("0");
@@ -280,6 +297,15 @@ public class MainActivity extends AppCompatActivity {
                .show();
    }
 
+    /**
+     * Método que se llama cuando una activity se completa, desde aquí se controla el evento de modificar la configuración en preferencias
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override protected void onActivityResult(int requestCode, int resultCode,
                                               Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -294,6 +320,17 @@ public class MainActivity extends AppCompatActivity {
         adaptador.setCursor(aux);
         adaptador.notifyDataSetChanged();
     }
+
+
+    /**
+     * Método para controlar los permisos necesarios
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override public void onRequestPermissionsResult(int requestCode,
                                                      String[] permissions, int[] grantResults) {
         if (requestCode == SOLICITUD_PERMISO_LOCALIZACION
@@ -303,11 +340,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Método que activa la localización cuando vuelve a estar en primer plano
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override protected void onResume() {
         super.onResume();
         usoLocalizacion.activar();
     }
 
+    /**
+     * Método que desactiva la localización cuando se pausa la app
+     * @author Angel Lopez Palacios
+     * @version 1.6
+     */
     @Override protected void onPause() {
         super.onPause();
         usoLocalizacion.desactivar();

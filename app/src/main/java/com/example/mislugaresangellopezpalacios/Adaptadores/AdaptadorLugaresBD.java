@@ -11,7 +11,7 @@ import com.example.mislugaresangellopezpalacios.Modelo.RepositorioLugares;
  * para que se guarden tanto los cambios que realicemos en los lugares
  * como cuando creamos un nuevo lugar
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1.6
  */
 public class AdaptadorLugaresBD extends AdaptadorLugares {
 
@@ -23,7 +23,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
      * @param lugares
      * @param cursor
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public AdaptadorLugaresBD(RepositorioLugares
                                       lugares, Cursor cursor) {
@@ -46,7 +46,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
      * @param posicion
      * @return lugar
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public Lugar lugarPosicion(int posicion) {
         cursor.moveToPosition(posicion);
@@ -59,7 +59,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
      * @param posicion
      * @return id del lugar
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public int idPosicion(int posicion) {
         cursor.moveToPosition(posicion);
@@ -73,7 +73,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
      * @param id
      * @return posición del lugar
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public int posicionId(int id) {
         int pos = 0;
@@ -98,7 +98,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
      * @param holder
      * @param posicion
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int posicion) {
@@ -110,7 +110,7 @@ public class AdaptadorLugaresBD extends AdaptadorLugares {
     /**
      * Devuelve el número total de elementos en el conjunto de datos
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public int getItemCount() {

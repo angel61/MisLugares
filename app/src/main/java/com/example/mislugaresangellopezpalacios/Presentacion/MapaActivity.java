@@ -29,7 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * FragmentActivity sobre el que vamos a cargar nuestro mapa de la API de Google Maps
  *
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1.6
  */
 public class MapaActivity extends FragmentActivity
         implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
@@ -43,7 +43,7 @@ public class MapaActivity extends FragmentActivity
      *
      * @param savedInstanceState
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class MapaActivity extends FragmentActivity
      *
      * @param googleMap
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -112,7 +112,7 @@ public class MapaActivity extends FragmentActivity
      *
      * @param marker
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onInfoWindowClick(Marker marker) {

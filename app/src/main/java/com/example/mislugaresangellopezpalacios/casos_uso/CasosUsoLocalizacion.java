@@ -30,7 +30,7 @@ import static androidx.core.app.ActivityCompat.shouldShowRequestPermissionRation
  * GeoPunto que es el formato usado en el resto de la aplicación
  *
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1.6
  */
 public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.OnRequestPermissionsResultCallback {
     private static final String TAG = "MisLugares";
@@ -49,7 +49,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * @param actividad
      * @param codigoPermiso
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public CasosUsoLocalizacion(Activity actividad, int codigoPermiso) {
         this.actividad = actividad;
@@ -69,7 +69,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      *
      * @return true o false
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public boolean hayPermisoLocalizacion() {
         return (ActivityCompat.checkSelfPermission(
@@ -82,7 +82,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * Método que guarda la ultima localización conocida del terminal
      *
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @SuppressLint("MissingPermission")
     public void ultimaLocalizazion() {
@@ -110,7 +110,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * @param justificacion
      * @param requestCode
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void solicitarPermiso(final String permiso, String justificacion,
                                  final int requestCode) {
@@ -137,7 +137,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * activa los eventos de localizacion y refresca el RecyclerView
      *
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void permisoConcedido() {
         ultimaLocalizazion();
@@ -150,7 +150,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * Si no tiene permisos los solicita
      *
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @SuppressLint("MissingPermission")
     private void activarProveedores() {
@@ -176,7 +176,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      *
      * @param location
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onLocationChanged(Location location) {
@@ -191,7 +191,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      *
      * @param proveedor
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onProviderDisabled(String proveedor) {
@@ -204,7 +204,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      *
      * @param proveedor
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onProviderEnabled(String proveedor) {
@@ -220,7 +220,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * @param estado
      * @param extras
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onStatusChanged(String proveedor, int estado, Bundle extras) {
@@ -234,7 +234,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      *
      * @param localiz
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     private void actualizaMejorLocaliz(Location localiz) {
         if (localiz != null && (mejorLoc == null
@@ -253,7 +253,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * Método que activa los permisos de localización y proveedores
      *
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void activar() {
         if (hayPermisoLocalizacion()) activarProveedores();
@@ -264,7 +264,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * Método que borra las localizaciones para el ahorro de datos
      *
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void desactivar() {
         if (hayPermisoLocalizacion()) manejadorLoc.removeUpdates(this);
@@ -277,7 +277,7 @@ public class CasosUsoLocalizacion implements LocationListener, ActivityCompat.On
      * @param permissions
      * @param grantResults
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

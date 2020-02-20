@@ -4,7 +4,7 @@ package com.example.mislugaresangellopezpalacios.Modelo;
  * Clase utilizada para manejar los datos de un Lugar
  *
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1.6
  */
 public class Lugar {
     private String nombre;
@@ -31,7 +31,7 @@ public class Lugar {
      * @param comentario
      * @param valoracion
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public Lugar(String nombre, String direccion, double longitud,
                  double latitud, TipoLugar tipo, int telefono,
@@ -52,7 +52,7 @@ public class Lugar {
      * Inicializa {@link #fecha}, {@link #posicion} y {@link #tipo}
      *
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public Lugar() {
         fecha = System.currentTimeMillis();
@@ -65,7 +65,7 @@ public class Lugar {
      *
      * @return {@link TipoLugar}
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public TipoLugar getTipo() {
         return tipo;
@@ -76,7 +76,7 @@ public class Lugar {
      *
      * @param tipo
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setTipo(TipoLugar tipo) {
         this.tipo = tipo;
@@ -87,7 +87,7 @@ public class Lugar {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public String getNombre() {
         return nombre;
@@ -98,7 +98,7 @@ public class Lugar {
      *
      * @param nombre
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -109,7 +109,7 @@ public class Lugar {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public String getDireccion() {
         return direccion;
@@ -120,7 +120,7 @@ public class Lugar {
      *
      * @param direccion
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
@@ -132,7 +132,7 @@ public class Lugar {
      *
      * @return {@link GeoPunto}
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public GeoPunto getPosicion() {
         return posicion;
@@ -143,7 +143,7 @@ public class Lugar {
      *
      * @param posicion
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setPosicion(GeoPunto posicion) {
         this.posicion = posicion;
@@ -155,7 +155,7 @@ public class Lugar {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public String getFoto() {
         return foto;
@@ -166,7 +166,7 @@ public class Lugar {
      *
      * @param foto
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setFoto(String foto) {
         this.foto = foto;
@@ -178,7 +178,7 @@ public class Lugar {
      *
      * @return int
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public int getTelefono() {
         return telefono;
@@ -189,7 +189,7 @@ public class Lugar {
      *
      * @param telefono
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setTelefono(int telefono) {
         this.telefono = telefono;
@@ -201,7 +201,7 @@ public class Lugar {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public String getUrl() {
         return url;
@@ -212,7 +212,7 @@ public class Lugar {
      *
      * @param url
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setUrl(String url) {
         this.url = url;
@@ -224,7 +224,7 @@ public class Lugar {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public String getComentario() {
         return comentario;
@@ -235,7 +235,7 @@ public class Lugar {
      *
      * @param comentario
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
@@ -247,7 +247,7 @@ public class Lugar {
      *
      * @return long
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public long getFecha() {
         return fecha;
@@ -258,7 +258,7 @@ public class Lugar {
      *
      * @param fecha
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setFecha(long fecha) {
         this.fecha = fecha;
@@ -270,7 +270,7 @@ public class Lugar {
      *
      * @return String
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public float getValoracion() {
         return valoracion;
@@ -281,18 +281,18 @@ public class Lugar {
      *
      * @param valoracion
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     public void setValoracion(float valoracion) {
         this.valoracion = valoracion;
     }
 
     /**
-     * toString generado por defecto
+     * Método toString para convertir un objeto en String en el formato que definimos
      *
-     * @return String
+     * @return String de Lugar
      * @author Angel Lopez Palacios
-     * @version 15/02/2020
+     * @version 1.6
      */
     @Override
     public String toString() {

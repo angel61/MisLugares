@@ -28,7 +28,7 @@ import java.io.IOException;
  * En esta clase se ejecutan distintos casos de uso referentes a un lugar
  *
  * @author Angel Lopez Palacios
- * @version 15/02/2020
+ * @version 1.6
  */
 public class CasosUsoLugar {
     private Activity actividad;
