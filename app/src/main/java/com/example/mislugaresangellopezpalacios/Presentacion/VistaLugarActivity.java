@@ -36,11 +36,23 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Clase para controlar la actividad del formulario de vista_lugar, sus elementos
+ * y el control de eventos. En el oncreate recogemos el id lugar correspondiente para apuntar desde
+ * un cursor a la coleccion de datos desde el RecycleView.
+ *
+ * @author Angel Lopez Palacios
+ * @version 1
+ * @see androidx.appcompat.app.AppCompatActivity
+ */
 public class VistaLugarActivity extends AppCompatActivity {
     public LugaresBD lugares;
     private CasosUsoLugar usoLugar;
     private int pos;
     private Lugar lugar;
+    /**
+     * El código que recogemos como resultado del form EdicionLugar.
+     */
     final static int RESULTADO_EDITAR = 1;
 
     private Toolbar toolbar;
@@ -48,7 +60,13 @@ public class VistaLugarActivity extends AppCompatActivity {
     private LinearLayout lweb;
     private LinearLayout ltelefono;
     private FloatingActionButton fab;
+    /**
+     * Resultado del almacenamiento de la imagen de Galeria.
+     */
     final static int RESULTADO_GALERIA = 2;
+    /**
+     * Almacenamos una foto correspondiente al lugar y después recibimos el resultado del proceso.
+     */
     final static int RESULTADO_FOTO = 3;
     private ImageView imageView;
     private AdaptadorLugaresBD adaptador;
@@ -58,8 +76,25 @@ public class VistaLugarActivity extends AppCompatActivity {
     private Uri uriUltimaFoto;
     private Bundle extras;
 
+    /**
+     * El id seleccionado del lugar en el formulario principal.
+     */
     public int _id = -1;
 
+    /**
+     * Inicializa los componentes de la actividad. El argumento Bundle
+     * contiene el estado ya guardado de la actividad.
+     * Si la actividad nunca ha existido, el valor del objeto Bundle es nulo.
+     * <p>
+     * muestra la configuración básica de la actividad, como declarar
+     * la interfaz de usuario (definida en un archivo XML de diseño),
+     * definir las variables de miembro y configurar parte de la IU
+     * </p>
+     *
+     * @param savedInstanceState objeto Bundle que contiene el estado de la actividad.
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +104,6 @@ public class VistaLugarActivity extends AppCompatActivity {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         extras = getIntent().getExtras();
         pos = extras.getInt("pos", 0);
-        // pos =adaptador.
         lugares = ((Aplicacion) getApplication()).lugares;
         adaptador = ((Aplicacion) getApplication()).adaptador;
         _id = adaptador.idPosicion(pos);
@@ -83,12 +117,33 @@ public class VistaLugarActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Método implementado para gestionar el recurso de menú (definido en XML)
+     * hacia el Menu proporcionado en la devolución de llamada.
+     * <p>
+     * Cuando comienza la actividad, para mostrar los elementos de la barra de app.
+     * </p>
+     *
+     * @param menu proporcionado en el XML para muestra los elementos de la barra.
+     * @return boolean que devuelve true en el caso de que se haya podido cargar la barra correctamente.
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.vista_lugar, menu);
         return true;
     }
 
+    /**
+     * Gestionamos el MenuItem seleccionado por el usuario. Recogemos el id del menu (definido por el atributo android:id)
+     * en el recurso del menú para realizar la accion correspondiente.
+     *
+     * @param item ID único del elemento de menú
+     * @return boolean donde controlamos que se ha escogido una opción válida del menú.
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -122,13 +177,26 @@ public class VistaLugarActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Resultado específico cuando el usuario termina con la actividad subsiguiente y regresa a la actividad
+     *
+     * @param requestCode código de petición especificada por la segunda actividad
+     *                    (se trata de RESULTADO_EDITAR si el usuario selecciona la edición del lugar,
+     *                    RESULTADO_GALERIAS si el usuario importa nuevas fotos de su galeria y RESULTADO_FOTO
+     *                    si el usuario realiza una foto con los permisos de la app)
+     * @param resultCode  código de resultado especificado por la segunda actividad
+     *                    (se trata de RESULT_OK si se realizó la operación de manera correcta
+     *                    o de RESULT_CANCELED si se retiró el usuario o falló la operación por algún motivo)
+     * @param data        Intent que proporciona los datos del resultado
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULTADO_EDITAR) {
             lugar = lugares.elemento(_id);
-            //pos = adaptador.posicionId(_id);
             actualizaVistas();
         } else if (requestCode == RESULTADO_GALERIA) {
             if (resultCode == Activity.RESULT_OK) {
@@ -146,6 +214,13 @@ public class VistaLugarActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Actualización de los componentes de la aplicación con las propiedades de la posición del lugar correspondiente.
+     * Se añade un listener para controlar la modificación del ratingBar de la valoración del lugar proporcionada por el usuario
+     *
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     public void actualizaVistas() {
         TextView nombre = findViewById(R.id.nombre);
         nombre.setText(lugar.getNombre());
@@ -162,8 +237,6 @@ public class VistaLugarActivity extends AppCompatActivity {
             TextView telefono = findViewById(R.id.telefono);
             telefono.setText(Integer.toString(lugar.getTelefono()));
         }
-        /*TextView telefono = findViewById(R.id.telefono);
-        telefono.setText(Integer.toString(lugar.getTelefono()));*/
         TextView url = findViewById(R.id.url);
         url.setText(lugar.getUrl());
         TextView comentario = findViewById(R.id.comentario);
@@ -199,6 +272,15 @@ public class VistaLugarActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Inicializa cada uno de los listener correspondientes a los componentes de la actividad
+     * Cada uno gestiona un evento en el caso de que el usuario haga click en ver el mapa, acceder a la
+     * URL de la página web, acceso a la galeria, a ver la foto, llamar por teléfono y eliminar la foto
+     * gestionado en los casos de uso de la clase CasosUsoLugar.
+     *
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     private void inicializarListeners() {
 
         lmapa = findViewById(R.id.LinearMapa);
@@ -286,6 +368,19 @@ public class VistaLugarActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Obtenemos la hora y los minutos con un cuadro de diálogo es un tipo de ventana emergente
+     * que solicita al usuario de la aplicación.
+     * <p>
+     * Permite modificar la hora y los minutos.
+     * Mediante TimePickerDialog seleccionamos la hora en milisegundos con un objeto de tipo Long.
+     * Finalmente, mostramos el diálogo llamando al método show(). Este método utiliza dos parámetros:
+     * el manejador de fragments y una etiqueta que identificará el cuadro de diálogo.
+     * </p>
+     *
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     private void cambiarHora() {
 
         final Calendar horaSelect = Calendar.getInstance();
@@ -308,6 +403,19 @@ public class VistaLugarActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    /**
+     * Obtenemos la fecha con un cuadro de diálogo es un tipo de ventana emergente
+     * que solicita al usuario de la aplicación.
+     * <p>
+     * Permite modificar el año, el mes y el día.
+     * Mediante DatePickerDialog seleccionamos la fecha en milisegundos con un objeto de tipo Long.
+     * Finalmente, mostramos el diálogo llamando al método show(). Este método utiliza dos parámetros:
+     * el manejador de fragments y una etiqueta que identificará el cuadro de diálogo.
+     * </p>
+     *
+     * @author Angel Lopez Palacios
+     * @version 1
+     */
     private void cambiarFecha() {
 
         final Calendar fechaSelect = Calendar.getInstance();
@@ -333,9 +441,5 @@ public class VistaLugarActivity extends AppCompatActivity {
         }, fechaSelect.get(Calendar.YEAR), fechaSelect.get(Calendar.MONTH), fechaSelect.get(Calendar.DAY_OF_MONTH));
         recogerFecha.show();
     }
-    /*@Override public void onActivityCreated(Bundle state) {
-     /*   if (extras != null) pos = extras.getInt("pos", 0);
-        else                pos = 0;
-        _id = adaptador.idPosicion(pos);}*/
 
 }
