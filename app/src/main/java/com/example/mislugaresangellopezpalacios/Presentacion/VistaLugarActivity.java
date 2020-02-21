@@ -321,7 +321,12 @@ public class VistaLugarActivity extends AppCompatActivity {
         galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usoLugar.ponerDeGaleria(v, RESULTADO_GALERIA);
+                if (usoAlmacenamiento.hayPermisoAlmacenamiento()) {
+                    usoLugar.ponerDeGaleria(v, RESULTADO_GALERIA);
+                } else {
+
+                    Toast.makeText(getBaseContext(), "No hay permisos de almacenamiento, no se puede acceder a la galeria", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
