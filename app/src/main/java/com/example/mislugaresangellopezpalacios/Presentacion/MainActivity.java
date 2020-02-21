@@ -47,12 +47,7 @@ import android.widget.Toast;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private Button bAcercaDe;
-    private Button bSalir;
-    private Button bPreferencias;
-    //private RepositorioLugares lugares;
     private RecyclerView recyclerView;
-    //public AdaptadorLugares adaptador;
     private LugaresBD lugares;
     private AdaptadorLugaresBD adaptador;
     private FloatingActionButton fab;
@@ -123,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                usoLugar.nuevo();
+                usoLugar.nuevo(((Aplicacion) getApplication())
+                        .posicionActual);
                 //finish();
             }
         });

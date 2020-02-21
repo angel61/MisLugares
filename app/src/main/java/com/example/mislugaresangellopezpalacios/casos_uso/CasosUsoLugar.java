@@ -318,6 +318,7 @@ public class CasosUsoLugar {
     /**
      * Metodo que creara un nuevo lugar  y abrira EdicionLugar para que insertemos los datos iniciales
      *
+     * @param posicion
      * @version 1
      * @author Angel Lopez Palacios
      * @see  LugaresBD#nuevo()
@@ -325,10 +326,8 @@ public class CasosUsoLugar {
      * @see  Lugar#setPosicion(GeoPunto)
      * @see  LugaresBD#actualiza(int, Lugar)
      */
-    public void nuevo() {
+    public void nuevo(GeoPunto posicion) {
         int id = lugares.nuevo();
-        GeoPunto posicion = ((Aplicacion) actividad.getApplication())
-                .posicionActual;
         if (!posicion.equals(GeoPunto.SIN_POSICION)) {
             Lugar lugar = lugares.elemento(id);
             lugar.setPosicion(posicion);
@@ -336,7 +335,7 @@ public class CasosUsoLugar {
         }
         Intent i = new Intent(actividad, EdicionLugarActivity.class);
         i.putExtra("_id", id);
-        actividad.startActivity(i);
+        actividad.startActivityForResult(i,8);
     }
 }
 
