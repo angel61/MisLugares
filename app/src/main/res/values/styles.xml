@@ -25,4 +25,7 @@
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@color/ic_launcher_background</item>
     </style>
+    <style name="ColoredHandleTheme">
+    <item name="colorControlActivated">@color/secondaryLightColor</item>
+</style>
 </resources>
