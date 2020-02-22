@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -146,7 +147,8 @@ public class MainActivity extends AppCompatActivity {
                         if (child != null) {
 
                             final int pos = recyclerView.getChildAdapterPosition(child);
-                            PopupMenu popup = new PopupMenu(MainActivity.this, child);
+                            Context wrapper = new ContextThemeWrapper(MainActivity.this, R.style.popup_style);
+                            PopupMenu popup = new PopupMenu(wrapper, child);
                             popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
                             popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                                 public boolean onMenuItemClick(MenuItem item) {

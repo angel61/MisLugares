@@ -22,10 +22,16 @@
         <item name="android:textSize">19sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@color/ic_launcher_background</item>
     </style>
+
     <style name="ColoredHandleTheme">
-    <item name="colorControlActivated">@color/secondaryLightColor</item>
-</style>
+        <item name="colorControlActivated">@color/secondaryLightColor</item>
+    </style>
+
+    <style name="popup_style" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
 </resources>
