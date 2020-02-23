@@ -39,6 +39,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 
 /**
  * Clase MainActivity que es la encargada de mostrar la pantalla principal
@@ -270,8 +272,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.menu_mapa) {
-            Intent intent = new Intent(this, MapaActivity.class);
-            startActivity(intent);
+            usoLugar.abrirMapa(((Aplicacion) getApplication()).posicionActual);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -7,6 +7,7 @@ import com.example.mislugaresangellopezpalacios.Adaptadores.AdaptadorLugaresBD;
 import com.example.mislugaresangellopezpalacios.Modelo.GeoPunto;
 import com.example.mislugaresangellopezpalacios.Modelo.LugaresBD;
 import com.example.mislugaresangellopezpalacios.Modelo.RepositorioLugares;
+import com.google.android.gms.maps.GoogleMap;
 
 /**
  * Clase para mantener el estado global de la aplicación.
@@ -28,6 +29,7 @@ public class Aplicacion extends Application {
      * El adaptador para enlazar los datos en el RecyclerView.
      */
     public AdaptadorLugaresBD adaptador;
+    public GoogleMap mapa;
 
     /**
      * La posicionActual del lugar, clase GeoPunto que almacena la longitud y la latitud para el posicionamiento.

@@ -63,7 +63,8 @@ public class MapaActivity extends FragmentActivity
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
-        ge = ((Aplicacion) this.getApplication()).posicionActual;
+        Bundle extras = getIntent().getExtras();
+        ge = (GeoPunto) extras.get("posicion");//((Aplicacion) this.getApplication()).posicionActual;
     }
 
     /**
@@ -76,6 +77,7 @@ public class MapaActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapa = googleMap;
+        ((Aplicacion) this.getApplication()).mapa=mapa;
         mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mapa.setOnMapLongClickListener(this);
         mapa.setOnMarkerDragListener(this);
@@ -117,6 +119,8 @@ public class MapaActivity extends FragmentActivity
             }
         }
         mapa.setOnInfoWindowClickListener(this);
+
+        ((Aplicacion) this.getApplication()).mapa=mapa;
     }
 
     /**
@@ -193,5 +197,10 @@ public class MapaActivity extends FragmentActivity
         usoLugar.guardar((Integer) marker.getTag(),lugar);
         System.out.println("actu");
 
+    }
+    @Override
+    public void onBackPressed() {
+        ((Aplicacion) getApplication()).mapa=null;
+        this.finish();
     }
 }

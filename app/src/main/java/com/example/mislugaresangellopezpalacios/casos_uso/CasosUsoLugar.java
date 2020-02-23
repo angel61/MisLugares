@@ -19,7 +19,11 @@ import com.example.mislugaresangellopezpalacios.Modelo.Lugar;
 import com.example.mislugaresangellopezpalacios.Modelo.LugaresBD;
 import com.example.mislugaresangellopezpalacios.Presentacion.Aplicacion;
 import com.example.mislugaresangellopezpalacios.Presentacion.EdicionLugarActivity;
+import com.example.mislugaresangellopezpalacios.Presentacion.MapaActivity;
 import com.example.mislugaresangellopezpalacios.Presentacion.VistaLugarActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,8 +51,8 @@ public class CasosUsoLugar {
      * @param adaptador
      * @version 1
      * @author Angel Lopez Palacios
-     * @see  LugaresBD
-     * @see  AdaptadorLugaresBD
+     * @see LugaresBD
+     * @see AdaptadorLugaresBD
      */
     public CasosUsoLugar(Activity actividad, LugaresBD lugares,
                          AdaptadorLugaresBD adaptador) {
@@ -237,9 +241,9 @@ public class CasosUsoLugar {
      * @param imageView
      * @version 1
      * @author Angel Lopez Palacios
-     * @see  Lugar#setFoto(String)
-     * @see  #visualizarFoto(Lugar, ImageView)
-     * @see  #actualizaPosLugar(int, Lugar)
+     * @see Lugar#setFoto(String)
+     * @see #visualizarFoto(Lugar, ImageView)
+     * @see #actualizaPosLugar(int, Lugar)
      */
     public void ponerFoto(int pos, String uri, ImageView imageView) {
         Lugar lugar = adaptador.lugarPosicion(pos);
@@ -307,8 +311,8 @@ public class CasosUsoLugar {
      * @param lugar
      * @version 1
      * @author Angel Lopez Palacios
-     * @see  AdaptadorLugaresBD#idPosicion(int)
-     * @see  #guardar(int, Lugar)
+     * @see AdaptadorLugaresBD#idPosicion(int)
+     * @see #guardar(int, Lugar)
      */
     public void actualizaPosLugar(int pos, Lugar lugar) {
         int id = adaptador.idPosicion(pos);
@@ -321,10 +325,10 @@ public class CasosUsoLugar {
      * @param posicion
      * @version 1
      * @author Angel Lopez Palacios
-     * @see  LugaresBD#nuevo()
-     * @see  LugaresBD#elemento(int)
-     * @see  Lugar#setPosicion(GeoPunto)
-     * @see  LugaresBD#actualiza(int, Lugar)
+     * @see LugaresBD#nuevo()
+     * @see LugaresBD#elemento(int)
+     * @see Lugar#setPosicion(GeoPunto)
+     * @see LugaresBD#actualiza(int, Lugar)
      */
     public void nuevo(GeoPunto posicion) {
         int id = lugares.nuevo();
@@ -335,7 +339,28 @@ public class CasosUsoLugar {
         }
         Intent i = new Intent(actividad, EdicionLugarActivity.class);
         i.putExtra("_id", id);
-        actividad.startActivityForResult(i,8);
+        actividad.startActivityForResult(i, 8);
+    }
+
+    /**
+     * Método que abre el mapa de la aplicacion y lo ubica en la posicion del lugar,
+     * si la actividad del mapa ya esta activa se reubica en la posicion indicada
+     *
+     * @see MapaActivity
+     * @param punto Localización en la que debe ubicar el mapa
+     */
+    public void abrirMapa(GeoPunto punto) {
+
+        GoogleMap mapa = ((Aplicacion) actividad.getApplication()).mapa;
+        if (mapa == null) {
+            Intent intent = new Intent(actividad, MapaActivity.class);
+            intent.putExtra("posicion", punto);
+            actividad.startActivity(intent);
+        } else {
+            mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(punto.getLatitud(), punto.getLongitud()), 12));
+            actividad.finish();
+        }
     }
 }
 

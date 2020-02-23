@@ -30,8 +30,12 @@ import com.example.mislugaresangellopezpalacios.Modelo.LugaresBD;
 import com.example.mislugaresangellopezpalacios.R;
 import com.example.mislugaresangellopezpalacios.casos_uso.CasoDeUsoAlmacenamiento;
 import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLugar;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -151,7 +155,8 @@ public class VistaLugarActivity extends AppCompatActivity {
                 usoLugar.compartir(lugar);
                 return true;
             case R.id.accion_llegar:
-                usoLugar.verMapa(lugar);
+                //usoLugar.verMapa(lugar);
+                usoLugar.abrirMapa(lugar.getPosicion());
                 return true;
             case R.id.accion_editar:
                 usoLugar.editar(pos, RESULTADO_EDITAR);

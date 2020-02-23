@@ -1,5 +1,6 @@
 package com.example.mislugaresangellopezpalacios.Modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Objects;
  * @author Angel Lopez Palacios
  * @version 1
  */
-public class GeoPunto {
+public class GeoPunto implements Serializable {
 
     private double longitud, latitud;
 
