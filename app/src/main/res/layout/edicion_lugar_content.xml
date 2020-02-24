@@ -6,11 +6,11 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/edicion_lugar"
     android:layout_width="match_parent"
-    android:paddingTop="24dp"
     android:layout_height="match_parent" tools:context=".Presentacion.EdicionLugarActivity"
     android:theme="@style/Theme.AppCompat.NoActionBar"
     android:background="@drawable/esquinas">
     <RelativeLayout
+        android:layout_margin="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
