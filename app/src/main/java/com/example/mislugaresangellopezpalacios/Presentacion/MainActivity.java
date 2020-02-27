@@ -4,42 +4,30 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.drawable.RippleDrawable;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
+import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.EditText;
 
-import com.example.mislugaresangellopezpalacios.Adaptadores.AdaptadorLugares;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mislugaresangellopezpalacios.Adaptadores.AdaptadorLugaresBD;
 import com.example.mislugaresangellopezpalacios.Modelo.LugaresBD;
 import com.example.mislugaresangellopezpalacios.R;
 import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLocalizacion;
 import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLugar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.ContextThemeWrapper;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.Serializable;
 
 
 /**
@@ -149,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         if (child != null) {
 
                             final int pos = recyclerView.getChildAdapterPosition(child);
-                            Context wrapper = new ContextThemeWrapper(MainActivity.this, R.style.popup_style);
+                            Context wrapper = new ContextThemeWrapper(MainActivity.this, R.style.AppTheme_PopupOverlay);
                             PopupMenu popup = new PopupMenu(wrapper, child);
                             popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
                             popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

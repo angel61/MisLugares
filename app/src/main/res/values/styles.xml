@@ -15,7 +15,10 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/secondaryDarkColor</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <style name="botonReg" parent="TextAppearance.AppCompat.Button">
         <item name="android:textColor">@color/fondo</item>
@@ -31,7 +34,4 @@
         <item name="colorControlActivated">@color/secondaryLightColor</item>
     </style>
 
-    <style name="popup_style" parent="Widget.AppCompat.PopupMenu">
-        <item name="android:textColor">@color/colorPrimaryDark</item>
-    </style>
 </resources>

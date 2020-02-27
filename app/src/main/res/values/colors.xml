@@ -13,7 +13,7 @@
     <color name="colorPrimaryDark">#338a3e</color>
     <color name="colorAccent">#ffee58</color>
     <color name="secondaryLightColor">#ffff8b</color>
-    <color name="secondaryDarkColor">#c9bc1f</color>
+    <color name="secondaryDarkColor">#f0dd36</color>
     <color name="fondo">#f9fbe7</color>
     <color name="secondaryTextColor">#000000</color>
 </resources>

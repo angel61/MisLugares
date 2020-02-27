@@ -12,13 +12,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.mislugaresangellopezpalacios.Adaptadores.AdaptadorInfoWindow;
 import com.example.mislugaresangellopezpalacios.Adaptadores.AdaptadorLugaresBD;
 import com.example.mislugaresangellopezpalacios.Modelo.GeoPunto;
 import com.example.mislugaresangellopezpalacios.Modelo.Lugar;
 import com.example.mislugaresangellopezpalacios.Modelo.LugaresBD;
 import com.example.mislugaresangellopezpalacios.Modelo.TipoLugar;
 import com.example.mislugaresangellopezpalacios.R;
-import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLocalizacion;
 import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLugar;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -102,6 +102,11 @@ public class MapaActivity extends FragmentActivity
             mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(p.getLatitud(), p.getLongitud()), 12));
         }
+
+
+        AdaptadorInfoWindow adapter = new AdaptadorInfoWindow(MapaActivity.this);
+        mapa.setInfoWindowAdapter(adapter);
+
         for (int n = 0; n < adaptador.getItemCount(); n++) {
             Lugar lugar = adaptador.lugarPosicion(n);
             GeoPunto p = lugar.getPosicion();
@@ -142,6 +147,10 @@ public class MapaActivity extends FragmentActivity
         }
     }
 
+    /**
+     * Listener que escucha los click de larga duración y pregunta al usuario si quiere crear un lugar donde se pulso
+     * @param latLng
+     */
    @Override
     public void onMapLongClick(LatLng latLng) {
         Bitmap iGrande = BitmapFactory.decodeResource(
@@ -167,6 +176,13 @@ public class MapaActivity extends FragmentActivity
                 .show();
 
     }
+
+    /**
+     * Cuando se recibe un resultado de una actividad se actualiza el mapa
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
@@ -178,16 +194,30 @@ public class MapaActivity extends FragmentActivity
         }
     }
 
+    /**
+     * Evento que se inicia cuando se empieza a arrastrar un marcador
+     * @param marker
+     */
     @Override
     public void onMarkerDragStart(Marker marker) {
 
     }
 
+    /**
+     *
+     * Evento que se inicia cuando se arrastra un marcador
+     * @param marker
+     */
     @Override
     public void onMarkerDrag(Marker marker) {
 
     }
 
+    /**
+     *
+     * Evento que se inicia cuando se termina de arrastrar un marcador
+     * @param marker
+     */
     @Override
     public void onMarkerDragEnd(Marker marker) {
         GeoPunto posicion=new GeoPunto(marker.getPosition().longitude, marker.getPosition().latitude);
@@ -198,6 +228,10 @@ public class MapaActivity extends FragmentActivity
         System.out.println("actu");
 
     }
+
+    /**
+     * Evento que se lanza cuando el usuario echa para atras
+     */
     @Override
     public void onBackPressed() {
         ((Aplicacion) getApplication()).mapa=null;
