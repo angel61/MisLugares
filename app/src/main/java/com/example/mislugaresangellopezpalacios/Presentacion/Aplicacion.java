@@ -29,6 +29,11 @@ public class Aplicacion extends Application {
      * El adaptador para enlazar los datos en el RecyclerView.
      */
     public AdaptadorLugaresBD adaptador;
+
+    /**
+     * El mapa cargado o nulo dependiendo la accion
+     * @see com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLugar#abrirMapa
+     */
     public GoogleMap mapa;
 
     /**

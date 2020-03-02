@@ -1,27 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:minWidth="200dp"
+    android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:background="@drawable/infowindow"
-    android:padding="16dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:minWidth="200dp">
 
     <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/nombrew"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="Nombres del lugar"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
-        android:textColor="@color/fondo"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_subtitle"
+        android:id="@+id/direccionw"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="dirección del lugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nombrew" />
+
+    <RatingBar
+        android:id="@+id/valoracionw"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:singleLine="false"
-        android:textColor="@color/fondo"/>
+        android:isIndicator="true"
+        android:rating="3"
+        android:progressTint="@color/fondo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direccionw" />
 
+    <TextView
+        android:id="@+id/distanciaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+
+        android:gravity="right"
+        android:text="... Km"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/valoracionw"
+        app:layout_constraintTop_toBottomOf="@id/direccionw" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="16dp">
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:rotation="180"
+        android:src="@drawable/triangulo" /></LinearLayout>
 </LinearLayout>
 </RelativeLayout>

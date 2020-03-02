@@ -3,9 +3,15 @@ package com.example.mislugaresangellopezpalacios.Adaptadores;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.mislugaresangellopezpalacios.Modelo.GeoPunto;
+import com.example.mislugaresangellopezpalacios.Modelo.Lugar;
+import com.example.mislugaresangellopezpalacios.Modelo.LugaresBD;
+import com.example.mislugaresangellopezpalacios.Presentacion.Aplicacion;
 import com.example.mislugaresangellopezpalacios.R;
+import com.example.mislugaresangellopezpalacios.casos_uso.CasosUsoLugar;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
@@ -40,11 +46,31 @@ public class AdaptadorInfoWindow implements GoogleMap.InfoWindowAdapter {
         View view; //= context.getLayoutInflater().inflate(R.layout.customwindow, null);
         view =LayoutInflater.from(context).inflate(R.layout.customwindow, null);
 
-        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
-        TextView tvSubTitle = (TextView) view.findViewById(R.id.tv_subtitle);
 
-        tvTitle.setText(marker.getTitle());
-        tvSubTitle.setText(marker.getSnippet());
+        TextView nombre = view.findViewById(R.id.nombrew);
+        TextView direccion = view.findViewById(R.id.direccionw);
+        RatingBar valoracion = view.findViewById(R.id.valoracionw);
+        TextView distancia = view.findViewById(R.id.distanciaw);
+
+        AdaptadorLugaresBD adaptador=((Aplicacion)context.getApplication()).adaptador;
+        int pos=adaptador.posicionId((int) marker.getTag());
+        Lugar lugar=adaptador.lugarPosicion(pos);
+
+        nombre.setText(lugar.getNombre());
+        direccion.setText(lugar.getDireccion());
+
+        valoracion.setRating(lugar.getValoracion());
+
+        GeoPunto punto = ((Aplicacion) context.getApplicationContext())
+                .posicionActual;
+        if (
+                lugar.getPosicion().equals(GeoPunto.SIN_POSICION)) {
+            distancia.setText("... Km");
+        } else {
+            int d = (int) punto.distancia(lugar.getPosicion());
+            if (d < 2000) distancia.setText(d + " m");
+            else distancia.setText(d / 1000 + " Km");
+        }
 
         return view;
     }
@@ -56,14 +82,6 @@ public class AdaptadorInfoWindow implements GoogleMap.InfoWindowAdapter {
      */
     @Override
     public View getInfoContents(Marker marker) {
-        View view; //= context.getLayoutInflater().inflate(R.layout.customwindow, null);
-        view =LayoutInflater.from(context).inflate(R.layout.customwindow, null);
-
-        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
-        TextView tvSubTitle = (TextView) view.findViewById(R.id.tv_subtitle);
-
-        tvTitle.setText(marker.getTitle());
-        tvSubTitle.setText(marker.getSnippet());
 
         return null;
     }
